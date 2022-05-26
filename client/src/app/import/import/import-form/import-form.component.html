@@ -1,0 +1,14 @@
+<crng-upload-form [disabled]="state.status === 'importing'" class="form" (done)="startImport.next($event)" (sample)="downloadSample.next()"></crng-upload-form>
+
+<div class="progress" *ngIf="state.status === 'importing' && state.progress !== undefined">
+  <div class="title">{{ state.progress + '%' }}</div>
+  <mat-progress-bar mode="determinate" [value]="state.progress"></mat-progress-bar>
+</div>
+
+<div class="parse-error" *ngIf="error">{{ error.message }}</div>
+
+<cdk-virtual-scroll-viewport itemSize="40" class="logs" minBufferPx="2000" maxBufferPx="2000">
+  <div *cdkVirtualFor="let log of logs" class="log" [ngClass]="{ error: log.error }">
+    {{ log.message }}
+  </div>
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,33 @@
+<div class="left" *ngIf="store.viewParams$ | async as viewParams">
+  <crng-search-input [value]="$any(viewParams.filters.term) || ''" (blured)="updateSearchTerm($event)" (clear)="updateSearchTerm('')"></crng-search-input>
+
+  <ng-container *ngIf="store.activeFilters$ | async as filtersList">
+    <ng-container *ngFor="let filter of filtersList; trackBy: identify">
+      <ng-container *ngIf="filtersMap.get(filter) as af">
+        <crng-filter-select
+          [idFieldName]="af.idFieldName"
+          [labelFieldName]="af.labelFieldName"
+          [alternativeLabelFieldName]="af.alternativeLabelFieldName || ''"
+          [dataSource]="$any(store)[af.dataSourceName]"
+          [selectedIds]="$any(viewParams.filters[af.filterParamName])"
+          [buttonText]="af.buttonText"
+          (apply)="applyFilterParam(af.filterParamName, $event)"
+        >
+        </crng-filter-select>
+      </ng-container>
+    </ng-container>
+    <crng-active-filters-select
+      [selectedIds]="filtersList"
+      (selectItem)="applyFilterParam($event.filterParamName, [])"
+      (unselectItem)="applyFilterParam($event.filterParamName, null)"
+    >
+    </crng-active-filters-select>
+    <crng-table-columns-select [selectedIds]="viewParams.columns" (apply)="applyTableColumns($event)"></crng-table-columns-select>
+  </ng-container>
+</div>
+
+<div class="right">
+  <crng-copy-text-button [text$]="shareUrl$" tooltipStartText="Share" tooltipCopiedText="Link copied to clipboard!" tooltipPosition="left">
+    <mat-icon class="share">share</mat-icon>
+  </crng-copy-text-button>
+</div>

@@ -1,0 +1,24 @@
+<form class="form" [formGroup]="form" (ngSubmit)="start()">
+  <div class="block">
+    <h3 class="title"><a href="" class="link" (click)="downloadSample($event)">Download sample</a></h3>
+    <crng-upload-button (fileSelect)="form.get('file')?.setValue($event)">
+      <span class="file-btn">{{ form.get('file')?.value?.name || 'Select File' }}</span>
+    </crng-upload-button>
+  </div>
+
+  <div class="block">
+    <h3 class="title">Delimiter</h3>
+    <mat-button-toggle-group appearance="legacy" formControlName="delimiter">
+      <mat-button-toggle [value]="d.id" *ngFor="let d of delimiters">{{ d.label }}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="block">
+    <h3 class="title">Escape</h3>
+    <mat-button-toggle-group appearance="legacy" formControlName="escape">
+      <mat-button-toggle [value]="e.id" *ngFor="let e of escapes">{{ e.label }}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <button type="submit" class="btn" mat-raised-button color="primary" [disabled]="disabled || form.invalid">Start</button>
+</form>

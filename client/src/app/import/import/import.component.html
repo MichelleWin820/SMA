@@ -1,0 +1,73 @@
+<mat-tab-group class="tabs-list" *ngIf="isConnected">
+  <mat-tab label="Genes">
+    <crng-import-form
+      (startImport)="startImport('genes', $event)"
+      (downloadSample)="sendSample('genes')"
+      [state]="state['genes'] || {}"
+      [logs]="logs['genes']"
+      [error]="errors['genes']"
+    ></crng-import-form>
+  </mat-tab>
+  <mat-tab label="Proteins">
+    <crng-import-form
+      (startImport)="startImport('proteins', $event)"
+      (downloadSample)="sendSample('proteins')"
+      [state]="state['proteins'] || {}"
+      [logs]="logs['proteins']"
+      [error]="errors['proteins']"
+    ></crng-import-form>
+  </mat-tab>
+  <mat-tab label="Domains">
+    <crng-import-form
+      (startImport)="startImport('domains', $event)"
+      (downloadSample)="sendSample('domains')"
+      [state]="state['domains'] || {}"
+      [logs]="logs['domains']"
+      [error]="errors['domains']"
+    ></crng-import-form>
+  </mat-tab>
+  <mat-tab label="Localizations">
+    <crng-import-form
+      (startImport)="startImport('localizations', $event)"
+      (downloadSample)="sendSample('localizations')"
+      [state]="state['localizations'] || {}"
+      [logs]="logs['localizations']"
+      [error]="errors['localizations']"
+    ></crng-import-form>
+  </mat-tab>
+  <mat-tab label="Pathway">
+    <crng-import-form
+      (startImport)="startImport('pathways', $event)"
+      (downloadSample)="sendSample('pathways')"
+      [state]="state['pathways'] || {}"
+      [logs]="logs['pathways']"
+      [error]="errors['pathways']"
+    ></crng-import-form>
+  </mat-tab>
+  <mat-tab label="Reactions">
+    <crng-import-form
+      (startImport)="startImport('reactions', $event)"
+      (downloadSample)="sendSample('reactions')"
+      [state]="state['reactions'] || {}"
+      [logs]="logs['reactions']"
+      [error]="errors['reactions']"
+    ></crng-import-form>
+  </mat-tab>
+  <mat-tab label="Aliases">
+    <crng-import-form
+      (startImport)="startImport('tags', $event)"
+      (downloadSample)="sendSample('tags')"
+      [state]="state['tags'] || {}"
+      [logs]="logs['tags']"
+      [error]="errors['tags']"
+    ></crng-import-form>
+  </mat-tab>
+  <mat-tab label="Papers">
+    <crng-import-papers
+      (startImport)="startImport('papers')"
+      [state]="state['papers'] || {}"
+      [logs]="logs['papers']"
+      [error]="errors['papers']"
+    ></crng-import-papers>
+  </mat-tab>
+</mat-tab-group>

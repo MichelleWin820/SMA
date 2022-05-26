@@ -1,0 +1,18 @@
+<form novalidate class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="control">
+    <mat-form-field class="input-block">
+      <input matInput type="email" maxlength="255" placeholder="Email Address" autocomplete="email" required formControlName="username" />
+      <mat-error *ngIf="username.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="username.hasError('email')">Email is not valid</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="control">
+    <img src="assets/img/lock.png" class="icon" alt="" />
+    <mat-form-field class="input-block">
+      <input matInput type="password" maxlength="255" placeholder="Password" autocomplete="password" required formControlName="password" />
+      <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-error *ngIf="loginForm.hasError('serverError')" class="test">{{ loginForm.getError('serverError').message }}</mat-error>
+  <button mat-raised-button="" color="primary" class="btn submit" type="submit" [disabled]="loginForm.disabled">Sign In</button>
+</form>

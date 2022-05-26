@@ -1,0 +1,12 @@
+.menu-search {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  .mat-icon {
+    margin: 0;
+  }
+}
+
+.selected {
+  background-color: #eaeeef;
+}

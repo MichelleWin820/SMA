@@ -1,0 +1,38 @@
+@import 'mixins/func';
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  border-radius: 4px;
+  background: var(--color-light-gray);
+
+  &.active {
+    .icon-arrow {
+      display: none;
+    }
+    .icon-clear {
+      display: inline-flex;
+    }
+  }
+}
+
+.btn-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  position: relative;
+  font-weight: 500;
+  padding: 0 20px;
+  height: 45px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.icon-clear {
+  cursor: pointer;
+  color: var(--color-primary);
+  display: none;
+  font-size: 16px;
+  height: auto;
+}

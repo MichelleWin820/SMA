@@ -1,0 +1,25 @@
+<button
+  type="button"
+  class="btn btn-menu"
+  mat-raised-button=""
+  color="primary"
+  [disabled]="disabled"
+  (menuOpened)="onMenuOpened()"
+  (menuClosed)="onMenuClosed()"
+  [matMenuTriggerFor]="multiSelectMenu"
+>
+  Filters
+  <mat-icon>menu</mat-icon>
+</button>
+
+<mat-menu #multiSelectMenu="matMenu">
+  <ng-template matMenuContent="">
+    <div class="menu-scroll">
+      <div mat-menu-item="" *ngFor="let item of items; trackBy: identify">
+        <mat-checkbox [checked]="selectedSet.has(item.filterParamName)" (change)="clickOnItem(item)" class="dd-checkbox">
+          {{ item.dropdownItemName }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </ng-template>
+</mat-menu>

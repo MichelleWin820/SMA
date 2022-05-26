@@ -1,0 +1,43 @@
+<div class="view-port" crngSearchResultsViewPort *ngIf="selServ.checked$ | async as checked">
+  <table
+    mat-table
+    matSort
+    [matSortActive]="matSortActive"
+    [matSortDirection]="matSortDirection"
+    [dataSource]="dataSource"
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="dropColumn($event)"
+    class="results-table"
+  >
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select" [sticky]="true">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="selServ.masterCheck()"
+          [checked]="checked.size > 0 && selServ.isAllChecked"
+          [indeterminate]="checked.size > 0 && !selServ.isAllChecked"
+        >
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="checkOne(row, $event)" [checked]="checked.has(row)"> </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container *ngFor="let col of displayedColumns; let idx = index" [matColumnDef]="col" [ngSwitch]="col">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header cdkDrag cdkDragLockAxis="x">
+        {{ columnsMap.get(col)?.friendlyName }}
+      </th>
+      <ng-container *ngSwitchCase="'pubMedId'">
+        <td mat-cell *matCellDef="let element" [innerHTML]="element[col] | linkify: 'https://pubmed.ncbi.nlm.nih.gov/@id/'"></td>
+      </ng-container>
+      <ng-container *ngSwitchDefault="">
+        <td mat-cell *matCellDef="let element">{{ element[col] }}</td>
+      </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="allColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: allColumns"></tr>
+  </table>
+</div>

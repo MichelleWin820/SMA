@@ -1,0 +1,48 @@
+.mat-menu-panel {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  width: 280px;
+  max-width: 280px;
+  .mat-menu-content {
+    padding: 0;
+    &:not(:empty) {
+      padding: 0;
+    }
+
+    .menu-scroll {
+      max-height: 50vh;
+      overflow: hidden;
+      overflow-y: auto;
+    }
+
+    .menu-search {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      height: 45px;
+      line-height: 45px;
+      border-bottom: 1px solid var(--color-primary);
+
+      .mat-icon {
+        margin: 0;
+      }
+
+      .input {
+        width: 100%;
+      }
+    }
+
+    .dropdown-footer {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 16px;
+      border-top: 1px solid var(--color-primary);
+
+      .btn-cancel {
+        color: var(--color-dark-gray);
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "env": "dev",
+  "auth": {
+    "tokenSign": "AUTH_TOKEN",
+    "expiresIn": "7d",
+    "cookieName": "sma_app",
+    "masterpassword": "AUTH_MASTERPASS"
+  },
+  "postreSql": {
+    "host": "PGSQL_HOST",
+    "port": 5432,
+    "database": "PGSQL_DB",
+    "user": "PGSQL_USER",
+    "password": "PGSQL_PASS"
+  }
+}

@@ -1,0 +1,33 @@
+<button
+  type="button"
+  class="btn"
+  mat-raised-button
+  [disabled]="disabled"
+  [disableRipple]="disableRipple"
+  (menuOpened)="onMenuOpened()"
+  (menuClosed)="onMenuClosed()"
+  [matMenuTriggerFor]="multiSelectMenu"
+  #menuTrigger="matMenuTrigger"
+>
+  <ng-content></ng-content>
+</button>
+
+<mat-menu #multiSelectMenu="matMenu">
+  <ng-template matMenuContent="">
+    <div *ngIf="hasSearch" class="menu-search mat-menu-item">
+      <mat-icon class="icon-search">search</mat-icon>
+      <input type="text" class="input" #searchInput (click)="$event.stopPropagation()" [placeholder]="searchPlaceholder" [formControl]="searchControl" />
+    </div>
+
+    <button
+      mat-menu-item=""
+      *ngFor="let item of filteredItems | async | slice: 0:100; trackBy: identify"
+      [ngClass]="{ selected: selectedSet.has(item[idFieldName]) }"
+      (click)="clickOnItem(item, $event)"
+      craftDisableFocus=""
+      type="button"
+    >
+      {{ item[labelFieldName] }}
+    </button>
+  </ng-template>
+</mat-menu>

@@ -1,0 +1,13 @@
+<button
+  type="button"
+  class="btn"
+  #tooltip="matTooltip"
+  [ngClass]="btnClass"
+  [disabled]="disabled"
+  [matTooltip]="tooltipText"
+  [matTooltipPosition]="tooltipPosition"
+  (mouseenter)="reset()"
+  (click)="copyText(tooltip, $event)"
+>
+  <ng-content></ng-content>
+</button>

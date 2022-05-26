@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+}
+
+.share {
+  color: var(--color-primary);
+}

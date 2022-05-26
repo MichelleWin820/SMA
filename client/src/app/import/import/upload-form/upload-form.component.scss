@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  align-items: flex-end;
+  gap: 2em;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-btn {
+  display: block;
+  min-width: 150px;
+}
+
+.title {
+  margin: 0;
+}
+
+.mat-button-toggle {
+  min-width: 46px;
+}
+
+.mat-button-toggle-checked {
+  color: var(--color-primary);
+  font-weight: bold;
+}

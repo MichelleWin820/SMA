@@ -1,0 +1,23 @@
+# Google Cloud Build Config for Sorghum Metabolic Atlas
+# Author: Garret Huntress <ghuntress@carnegiescience.edu>
+
+steps:
+  # Build SMA App Container
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'docker build --build-arg AUTH_TOKEN=$$AUTH_TOKEN --build-arg AUTH_MASTERPASS=$$AUTH_MASTERPASS --build-arg PGSQL_HOST=$_PGSQL_HOST --build-arg PGSQL_DB=$_PGSQL_DB --build-arg PGSQL_USER=$_PGSQL_USER --build-arg PGSQL_PASS=$$PGSQL_PASS -t us-central1-docker.pkg.dev/$PROJECT_ID/sma-app/prod .' 
+    secretEnv: [ 'AUTH_TOKEN', 'AUTH_MASTERPASS', 'PGSQL_PASS' ]
+availableSecrets:
+  secretManager:
+    - versionName: 'projects/$PROJECT_ID/secrets/auth_token/versions/latest'
+      env: 'AUTH_TOKEN'
+    - versionName: 'projects/$PROJECT_ID/secrets/auth_masterpass/versions/latest'
+      env: 'AUTH_MASTERPASS'
+    - versionName: 'projects/$PROJECT_ID/secrets/pgsql_pass/versions/latest'
+      env: 'PGSQL_PASS'
+
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sma-app/prod'
+

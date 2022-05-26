@@ -1,0 +1,81 @@
+<mat-toolbar class="nav">
+  <a class="logo" [routerLink]="['/']" routerLinkActive>Logo</a>
+
+  <div class="menu-w">
+    <mat-icon class="m-menu">menu</mat-icon>
+
+    <ul class="menu">
+      <li>
+        About
+        <ul class="dropdown" aria-label="submenu">
+          <li>
+            <a [routerLink]="['about', 'mission']" routerLinkActive>Mission</a>
+          </li>
+          <li>
+            <a [routerLink]="['about', 'people']" routerLinkActive>People</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        Data
+        <ul class="dropdown" aria-label="submenu">
+          <li>
+            <a [routerLink]="['data', 'search']" routerLinkActive>Search</a>
+          </li>
+          <li>
+            <a [routerLink]="['data', 'browse']" routerLinkActive>Browse</a>
+          </li>
+          <li>
+            <a [routerLink]="['data', 'bulk']" routerLinkActive>Bulk download</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        Software
+        <ul class="dropdown" aria-label="submenu">
+          <li>
+            <a [routerLink]="['software', 'guides']" routerLinkActive>Guides</a>
+          </li>
+          <li>
+            <a [routerLink]="['software', 'api']" routerLinkActive>API</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        Resources + Reagents
+        <ul class="dropdown" aria-label="submenu">
+          <li>
+            <a [routerLink]="['resources', 'protocols']" routerLinkActive>Protocols</a>
+          </li>
+          <li>
+            <a [routerLink]="['resources', 'vectors']" routerLinkActive>Vectors</a>
+          </li>
+          <li>
+            <a [routerLink]="['resources', 'markers']" routerLinkActive>Organelles markers</a>
+          </li>
+          <li>
+            <a [routerLink]="['resources', 'publications']" routerLinkActive>Publications</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        Help
+        <ul class="dropdown" aria-label="submenu">
+          <li>
+            <a [routerLink]="['help', 'tutorials']" routerLinkActive>Tutorials</a>
+          </li>
+          <li>
+            <a [routerLink]="['help', 'contact']" routerLinkActive>Contact</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a [routerLink]="['import']">Import</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,4 @@
+<input type="file" style="display: none" #fileInput (change)="onFileInput(fileInput)" [accept]="accept" />
+<button type="button" mat-raised-button="" (click)="fileInput.click()">
+  <ng-content></ng-content>
+</button>

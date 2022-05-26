@@ -1,0 +1,15 @@
+<mat-icon class="icon-search">search</mat-icon>
+<input
+  #input
+  type="text"
+  [disabled]="disabled"
+  [attr.maxlength]="maxlength"
+  [placeholder]="placeholder"
+  [value]="value"
+  (blur)="blured.next(input.value)"
+  (keydown.enter)="onKeyEnter(input)"
+  (input)="write(input.value)"
+  class="input-search"
+/>
+
+<mat-icon *ngIf="!!value" class="icon-clear" (click)="clearClick()" matTooltip="Clear search" matTooltipPosition="above">close</mat-icon>
